@@ -16,6 +16,3 @@ Sub onAction_MergePrint(control As IRibbonControl): Call MergePrint: FinalUseCom
 Sub onAction_AddinConfig(control As IRibbonControl): Call AddinConfig: FinalUseCommand = "AddinConfig": End Sub
 Sub onAction_AddinInfo(control As IRibbonControl): Call AddinInfo: FinalUseCommand = "AddinInfo": End Sub
 Sub onAction_AddinEnd(control As IRibbonControl): Call AddinEnd: FinalUseCommand = "AddinEnd": End Sub
-
-
-

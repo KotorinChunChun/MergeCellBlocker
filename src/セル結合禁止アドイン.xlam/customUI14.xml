@@ -1,0 +1,25 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+	<ribbon startFromScratch="false">
+		<tabs>
+			<tab id="mergeCellsBlockerTab" label="セル結合禁止">
+				<group id="mergeBlockerTabGroup1" label="結合の監視">
+					<button id="mergeBlockerButton01" label="監視開始" imageMso="MediaPlayPreview" size="large" onAction="onAction_MergeMonitorStart" />
+					<button id="mergeBlockerButton02" label="監視停止" imageMso="Media14PausePreview" size="large" onAction="onAction_MergeMonitorStop" />
+					<button id="mergeBlockerButton11" label="結合セルを検索" imageMso="SearchOnWeb" size="large" onAction="onAction_MergeSearch" />
+				</group>
+				<group id="mergeBlockerTabGroup2" label="セル結合の解除支援">
+					<button id="mergeBlockerButton12" label="分解" imageMso="NavPaneThumbnailView" size="large" onAction="onAction_MergeBreak" />
+					<button id="mergeBlockerButton13" label="縦に結合" imageMso="SelectColumn" size="large" onAction="onAction_MergeDown" />
+					<button id="mergeBlockerButton14" label="横に結合" imageMso="SelectRow" size="large" onAction="onAction_MergeRight" />
+					<button id="mergeBlockerButton15" label="縦横結合" imageMso="ScaleDrawingCanvas" size="large" onAction="onAction_MergeAuto" />
+				</group>
+				<group id="mergeBlockerTabGroup3" label="機能">
+					<button id="mergeBlockerButton16" label="結合して印刷" imageMso="PrintAttach" size="large" onAction="onAction_MergePrint" />
+					<button id="mergeBlockerButton97" label="設定" imageMso="CurrentViewSettings" size="large" onAction="onAction_AddinConfig" />
+					<button id="mergeBlockerButton98" label="情報を表示" imageMso="About" size="large" onAction="onAction_AddinInfo" />
+					<button id="mergeBlockerButton99" label="アドインを終了" imageMso="XDPPClose" size="large" onAction="onAction_AddinEnd" />
+				</group>
+			</tab>
+		</tabs>
+	</ribbon>
+</customUI>

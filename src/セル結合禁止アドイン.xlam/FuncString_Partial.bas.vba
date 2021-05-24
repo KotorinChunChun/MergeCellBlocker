@@ -89,4 +89,3 @@ Function GetRangeByFormula(formula_str) As Excel.Range
     Dim v: v = SplitFormulaPathBookSheetCell(formula_str)
     Set GetRangeByFormula = Workbooks(v(1)).Worksheets(v(2)).Range(v(3))
 End Function
-

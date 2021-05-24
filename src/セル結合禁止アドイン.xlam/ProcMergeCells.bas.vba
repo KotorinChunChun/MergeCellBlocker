@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "ProcMergeCells"
 Option Explicit
 
 Public Const GLOBAL_HIGHLIGHT_NAME = "MergeCellHighlight"

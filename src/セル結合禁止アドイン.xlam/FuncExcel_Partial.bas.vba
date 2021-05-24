@@ -34,4 +34,3 @@ Public Function ShapesFill(ShapeName As String, _
     Next
     Set ShapesFill = CL
 End Function
-
