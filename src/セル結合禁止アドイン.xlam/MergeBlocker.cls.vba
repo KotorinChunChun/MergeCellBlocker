@@ -17,8 +17,8 @@ Attribute VB_Exposed = False
 '
 Option Explicit
 
-Private WithEvents App As Excel.Application
-Attribute App.VB_VarHelpID = -1
+Private WithEvents app As Excel.Application
+Attribute app.VB_VarHelpID = -1
 
 
 Const ExMessage00 = "ƒZƒ‹‚ÌŒ‹‡‚ª [num]Œ ŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·B"
@@ -38,49 +38,49 @@ Const ExMessage24 = "ƒZƒ‹‚ÌŒ‹‡‚ğ‰ğœ‚·‚é‚±‚Æ‚ÅA‹C‚É‚È‚é‚ ‚Ìq‚ª˜b‚µ‚©‚¯‚Ä‚­‚ê‚
 Const ExMessage29 = "ƒZƒ‹‚ÌŒ‹‡‚ª‚³‚ê‚½êŠ‚ğŠm”F‚µ‚Ü‚·‚©H"
 
 Const ExMessage30 = "y–½—ßz"
-Const ExMessage31 = "‚®‚¾‚®‚¾Œ¾‚í‚¸‚É‚³‚Á‚³‚Æ’¼‚¹"
+Const ExMessage31 = "‚®‚¾‚®‚¾Œ¾‚í‚¸‚É‚³‚Á‚³‚Æ’¼‚³‚ñ‚©`‚¢I"
 Const ExMessage39 = ""
 
 Const OkMessage = "Œ‹‡‚ÍŠ®‘S‚É‹ì’€‚³‚ê‚Ü‚µ‚½"
 
 Property Get MessageTitle() As Collection
-    Dim col As Collection: Set col = New Collection
-    col.Add ExMessage10
-    col.Add ExMessage20
-    col.Add ExMessage30
-    Set MessageTitle = col
+    Dim Col As Collection: Set Col = New Collection
+    Col.Add ExMessage10
+    Col.Add ExMessage20
+    Col.Add ExMessage30
+    Set MessageTitle = Col
 End Property
 
 Property Get MessageStyle() As Collection
-    Dim col As Collection: Set col = New Collection
-    col.Add VbMsgBoxStyle.vbYesNo + VbMsgBoxStyle.vbExclamation
-    col.Add VbMsgBoxStyle.vbYesNo + VbMsgBoxStyle.vbInformation
-    col.Add VbMsgBoxStyle.vbOKOnly + VbMsgBoxStyle.vbCritical
-    Set MessageStyle = col
+    Dim Col As Collection: Set Col = New Collection
+    Col.Add VbMsgBoxStyle.vbYesNo + VbMsgBoxStyle.vbExclamation
+    Col.Add VbMsgBoxStyle.vbYesNo + VbMsgBoxStyle.vbInformation
+    Col.Add VbMsgBoxStyle.vbOKOnly + VbMsgBoxStyle.vbCritical
+    Set MessageStyle = Col
 End Property
 
 Property Get MessageData() As Collection
-    Dim col As Collection: Set col = New Collection
-    col.Add Array(ExMessage11, ExMessage12, ExMessage13, ExMessage14)
-    col.Add Array(ExMessage21, ExMessage22, ExMessage23, ExMessage24)
-    col.Add Array(ExMessage31)
-    Set MessageData = col
+    Dim Col As Collection: Set Col = New Collection
+    Col.Add Array(ExMessage11, ExMessage12, ExMessage13, ExMessage14)
+    Col.Add Array(ExMessage21, ExMessage22, ExMessage23, ExMessage24)
+    Col.Add Array(ExMessage31)
+    Set MessageData = Col
 End Property
 
 Property Get MessageNextResult() As Collection
-    Dim col As Collection: Set col = New Collection
-    col.Add VbMsgBoxResult.vbYes
-    col.Add VbMsgBoxResult.vbNo
-    col.Add VbMsgBoxResult.vbOK
-    Set MessageNextResult = col
+    Dim Col As Collection: Set Col = New Collection
+    Col.Add VbMsgBoxResult.vbYes
+    Col.Add VbMsgBoxResult.vbNo
+    Col.Add VbMsgBoxResult.vbOK
+    Set MessageNextResult = Col
 End Property
 
 Property Get MessageFooter() As Collection
-    Dim col As Collection: Set col = New Collection
-    col.Add ExMessage19
-    col.Add ExMessage29
-    col.Add ExMessage39
-    Set MessageFooter = col
+    Dim Col As Collection: Set Col = New Collection
+    Col.Add ExMessage19
+    Col.Add ExMessage29
+    Col.Add ExMessage39
+    Set MessageFooter = Col
 End Property
 
 'ƒuƒbƒN•Û‘¶
@@ -109,9 +109,9 @@ Private Function CheckMergeCells(wb As Workbook) As Boolean
     '’ú‚ß‚é‚Ü‚ÅƒƒbƒZ[ƒW‚ğ•\¦
     Dim i As Long
     For i = 1 To MessageTitle.Count
-        Dim item
-        For Each item In MessageData(i)
-            If MsgBox(item & vbLf & vbLf & MessageFooter(i), _
+        Dim Item
+        For Each Item In MessageData(i)
+            If MsgBox(Item & vbLf & vbLf & MessageFooter(i), _
                 MessageStyle(i), _
                 MessageTitle(i) & " - " & Replace(ExMessage00, "[num]", dic.Count) _
                 ) <> MessageNextResult(i) Then
@@ -128,7 +128,7 @@ BreakForFor:
 End Function
 
 Private Sub Class_Initialize()
-    Set App = Application
+    Set app = Application
 End Sub
 
 '–â‘è‚ğƒ‰ƒ“ƒ_ƒ€‚É‚µ‚ÄA‚Í‚¢@‚Æ@‚¢‚¢‚¦@‚ğ“ü‚ê‘Ö‚¦‚é

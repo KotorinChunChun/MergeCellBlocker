@@ -59,8 +59,8 @@ Public Function GetWorkbookMergeCellsDictionary(wb As Workbook) As Object
     For Each ws In wb.Worksheets
         For Each rng In ws.UsedRange
             If rng.MergeCells Then
-                If rng.MergeArea.item(1, 1).Address = rng.item(1, 1).Address Then
-                    ret.Add "='[" & wb.Name & "]" & ws.Name & "'!" & rng.Address(False, False), rng.item(1, 1).Value
+                If rng.MergeArea.Item(1, 1).Address = rng.Item(1, 1).Address Then
+                    ret.Add "='[" & wb.Name & "]" & ws.Name & "'!" & rng.Address(False, False), rng.Item(1, 1).Value
                 End If
             End If
         Next
@@ -83,7 +83,7 @@ Public Sub rangeHighlight(rng As Range, obj_name As String)
     
     '囲い図形を準備 or 再利用
     Dim shp As Shape
-    Dim shps: Set shps = ShapesFill(obj_name, rng.Worksheet)
+    Dim shps: Set shps = kccFuncExcel.ShapesFill(obj_name, rng.Worksheet)
     
     If shps.Count = 0 Then
         Set shp = rng.Worksheet.Shapes.AddShape(msoShapeRectangle, 1, 1, 1, 1)
@@ -96,7 +96,7 @@ Public Sub rangeHighlight(rng As Range, obj_name As String)
         
         With shp.Line
             .Visible = msoTrue
-            .ForeColor.RGB = RGB(255, 0, 0)
+            .ForeColor.Rgb = Rgb(255, 0, 0)
             .Weight = 6
         End With
     Else
@@ -114,7 +114,7 @@ End Sub
 '指定名称のハイライト用の図形を削除する
 Sub removeHighlight(wb As Workbook, obj_name As String)
     On Error Resume Next
-    Dim shps: Set shps = ShapesFill(obj_name, wb:=wb)
+    Dim shps: Set shps = kccFuncExcel.ShapesFill(obj_name, wb:=wb)
     Dim shp
     For Each shp In shps
         shp.Delete

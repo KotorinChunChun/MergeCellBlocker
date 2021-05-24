@@ -14,13 +14,13 @@ Rem
 Rem
 Option Explicit
 
-Private WithEvents App As Excel.Application
-Attribute App.VB_VarHelpID = -1
+Private WithEvents app As Excel.Application
+Attribute app.VB_VarHelpID = -1
 
 Private excelWindow As Window
 
 Private Sub Class_Initialize()
-    Set App = Application
+    Set app = Application
 End Sub
 
 'イベントをフックするオブジェクトを指定する
@@ -39,7 +39,7 @@ Public Function Init(obj As Object) As Object
 End Function
 
 'セルの選択変更時にA列に記載されている参照先のセルをハイライトする
-Private Sub App_SheetSelectionChange(ByVal Sh As Object, ByVal Target As Range)
+Private Sub app_SheetSelectionChange(ByVal Sh As Object, ByVal Target As Range)
     On Error GoTo ErrorBreak
     If Sh.Parent.Windows(1).Caption <> excelWindow.Caption Then Exit Sub
     If IsEmpty(Target.Value) Then Exit Sub
@@ -49,12 +49,12 @@ Private Sub App_SheetSelectionChange(ByVal Sh As Object, ByVal Target As Range)
         Dim refAdr As String: refAdr = Target.EntireRow.Cells(1, 1).Value
         Dim refRng As Range: Set refRng = GetRangeByFormula(refAdr)
         If refRng Is Nothing Then Debug.Print "address error : " & refAdr: Exit Sub
-        Application.GoTo refRng
+        Application.Goto refRng
         If Err Then Exit Sub
         Call moveCenterRange(refRng)
     On Error GoTo 0
     
-    Application.GoTo Target
+    Application.Goto Target
     
     Call rangeHighlight(refRng, GLOBAL_HIGHLIGHT_NAME)
     

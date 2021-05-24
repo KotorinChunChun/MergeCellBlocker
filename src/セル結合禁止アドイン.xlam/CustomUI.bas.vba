@@ -5,14 +5,14 @@ Rem
 Rem 本モジュールは自作のCustomUIエディタから自動生成したイベントハンドラです。
 Rem
 
-Sub onAction_AddinStart(control As IRibbonControl): Call AddinStart: FinalUseCommand = "AddinStart": End Sub
-Sub onAction_AddinStop(control As IRibbonControl): Call AddinStop: FinalUseCommand = "AddinStop": End Sub
-Sub onAction_MergeSearch(control As IRibbonControl): Call MergeSearch: FinalUseCommand = "MergeSearch": End Sub
-Sub onAction_MergeBreak(control As IRibbonControl): Call MergeBreak: FinalUseCommand = "MergeBreak": End Sub
-Sub onAction_MergeDown(control As IRibbonControl): Call MergeDown: FinalUseCommand = "MergeDown": End Sub
-Sub onAction_MergeRight(control As IRibbonControl): Call MergeRight: FinalUseCommand = "MergeRight": End Sub
-Sub onAction_MergeAuto(control As IRibbonControl): Call MergeAuto: FinalUseCommand = "MergeAuto": End Sub
-Sub onAction_MergePrint(control As IRibbonControl): Call MergePrint: FinalUseCommand = "MergePrint": End Sub
-Sub onAction_AddinConfig(control As IRibbonControl): Call AddinConfig: FinalUseCommand = "AddinConfig": End Sub
-Sub onAction_AddinInfo(control As IRibbonControl): Call AddinInfo: FinalUseCommand = "AddinInfo": End Sub
-Sub onAction_AddinEnd(control As IRibbonControl): Call AddinEnd: FinalUseCommand = "AddinEnd": End Sub
+Sub onAction_AddinStart(Control As IRibbonControl): Call AddinStart: FinalUseCommand = "AddinStart": End Sub
+Sub onAction_AddinStop(Control As IRibbonControl): Call AddinStop: FinalUseCommand = "AddinStop": End Sub
+Sub onAction_MergeSearch(Control As IRibbonControl): Call MergeSearch: FinalUseCommand = "MergeSearch": End Sub
+Sub onAction_MergeBreak(Control As IRibbonControl): Call MergeBreak: FinalUseCommand = "MergeBreak": End Sub
+Sub onAction_MergeDown(Control As IRibbonControl): Call MergeDown: FinalUseCommand = "MergeDown": End Sub
+Sub onAction_MergeRight(Control As IRibbonControl): Call MergeRight: FinalUseCommand = "MergeRight": End Sub
+Sub onAction_MergeAuto(Control As IRibbonControl): Call MergeAuto: FinalUseCommand = "MergeAuto": End Sub
+Sub onAction_MergePrint(Control As IRibbonControl): Call MergePrint: FinalUseCommand = "MergePrint": End Sub
+Sub onAction_AddinConfig(Control As IRibbonControl): Call AddinConfig: FinalUseCommand = "AddinConfig": End Sub
+Sub onAction_AddinInfo(Control As IRibbonControl): Call AddinInfo: FinalUseCommand = "AddinInfo": End Sub
+Sub onAction_AddinEnd(Control As IRibbonControl): Call AddinEnd: FinalUseCommand = "AddinEnd": End Sub

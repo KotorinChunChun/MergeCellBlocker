@@ -1,0 +1,34 @@
+{
+  //改行コード
+  "files.eol": "\r\n",
+
+  //文字コード自動判定
+  //"files.autoGuessEncoding": true,
+
+  //文字コード強制Shift-JIS
+  //"files.encoding": "shiftjis",
+
+  //言語に対するファイルの関連付け
+  //・シンタックスハイライト
+  //・文字コード判定
+  //要：VSCode VBA
+  "files.associations": {
+    "*.frm": "vb",
+    "*.bas": "vb",
+    "*.cls": "vb",
+    "*.vba": "vb",
+    "*.xml": "xml",
+    "*.md": "markdown"
+  },
+
+  //文字コード設定
+  "[vb]": {
+    "files.encoding": "shiftjis"
+  },
+  "[xml]": {
+    "files.encoding": "utf8"
+  },
+  "[markdown]": {
+    "files.encoding": "utf8"
+  }
+}
