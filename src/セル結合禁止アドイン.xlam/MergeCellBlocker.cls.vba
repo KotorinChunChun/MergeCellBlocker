@@ -2,10 +2,10 @@ VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
-Attribute VB_Name = "MergeBlocker"
+Attribute VB_Name = "MergeCellBlocker"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
-Attribute VB_PredeclaredId = False
+Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'MergeBlcoker
 '
@@ -127,8 +127,16 @@ BreakForFor:
     
 End Function
 
-Private Sub Class_Initialize()
-    Set app = Application
-End Sub
+Rem オブジェクトの作成
+Public Function Init(pApp As Excel.Application) As MergeCellBlocker
+    If Me Is MergeCellBlocker Then
+        With New MergeCellBlocker
+            Set Init = .Init(pApp)
+        End With
+        Exit Function
+    End If
+    Set Init = Me
+    Set app = pApp
+End Function
 
 '問題をランダムにして、はい　と　いいえ　を入れ替える

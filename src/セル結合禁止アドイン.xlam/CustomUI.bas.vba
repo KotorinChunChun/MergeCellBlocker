@@ -5,8 +5,8 @@ Rem
 Rem 本モジュールは自作のCustomUIエディタから自動生成したイベントハンドラです。
 Rem
 
-Sub onAction_AddinStart(Control As IRibbonControl): Call AddinStart: FinalUseCommand = "AddinStart": End Sub
-Sub onAction_AddinStop(Control As IRibbonControl): Call AddinStop: FinalUseCommand = "AddinStop": End Sub
+Sub onAction_Start_MergeCellBlocker(Control As IRibbonControl): Call Start_MergeCellBlocker: FinalUseCommand = "Start_MergeCellBlocker": End Sub
+Sub onAction_Stop_MergeCellBlocker(Control As IRibbonControl): Call Stop_MergeCellBlocker: FinalUseCommand = "Stop_MergeCellBlocker": End Sub
 Sub onAction_MergeSearch(Control As IRibbonControl): Call MergeSearch: FinalUseCommand = "MergeSearch": End Sub
 
 Sub onAction_Start_MergeCellCreater(Control As IRibbonControl): Call Start_MergeCellCreater: FinalUseCommand = "Start_MergeCellCreater": End Sub

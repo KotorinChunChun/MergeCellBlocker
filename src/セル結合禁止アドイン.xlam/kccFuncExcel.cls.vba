@@ -184,10 +184,23 @@ Function RangeUnMerge(targetRange As Range, _
     'Œ‹‡ƒZƒ‹‚ğ•ª‰ğ
     Dim v As Variant
     For Each rng In rgs
+        Dim bdhWeight, bdwWeight
+        bdhWeight = rng.Borders(xlEdgeTop).Weight
+        bdwWeight = rng.Borders(xlEdgeLeft).Weight
         v = rng(1, 1).Value
         adr = rng.MergeArea.Address
         rng.MergeArea.MergeCells = False
-        rng.Parent.Range(adr).Value = v
+        With rng.Parent.Range(adr)
+            .Value = v
+            'Œrü‚ğ•œŒ³
+            .Borders(xlEdgeTop).Weight = bdhWeight
+            .Borders(xlInsideHorizontal).Weight = bdhWeight
+            .Borders(xlEdgeBottom).Weight = bdhWeight
+            
+            .Borders(xlEdgeLeft).Weight = bdwWeight
+            .Borders(xlInsideVertical).Weight = bdwWeight
+            .Borders(xlEdgeRight).Weight = bdwWeight
+        End With
     Next
     
 End Function

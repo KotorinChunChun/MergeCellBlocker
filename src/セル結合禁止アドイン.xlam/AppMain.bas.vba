@@ -21,19 +21,16 @@ Public Const APP_VERSION = "0.13"
 Public Const APP_UPDATE = "2021/05/24"
 Public Const APP_URL = "https://www.excel-chunchun.com/entry/merge_cell_blocker"
 
-Public instMergeBlocker As MergeBlocker
-Public instCellHighlighter As CellHighlighter
-
 '--------------------------------------------------
 'アドイン実行時
 Sub AddinStart()
-    Call MonitorStart
+    Call Start_MergeCellBlocker
     MsgBox "セルの結合は絶対にゆるしまへんで～～～！", _
                 vbExclamation + vbOKOnly, ThisWorkbook.Name
 End Sub
 
 'アドイン一時停止時
-Sub AddinStop(): Call MonitorStop: End Sub
+Sub AddinStop(): Call Stop_MergeCellBlocker: End Sub
 
 'アドイン設定表示
 Sub AddinConfig(): Call SettingForm.Show: End Sub
@@ -94,10 +91,23 @@ Sub MergePrint(): MsgBox "Print": End Sub
 '監視開始
 'Workbook_Openから呼ばれる
 '他ブックの上書き保存を検知するために使用される
-Sub MonitorStart(): Set instMergeBlocker = New MergeBlocker: End Sub
+Sub Start_MergeCellBlocker(): Call SubMergeCellBlocker(False): End Sub
 
 '監視停止
-Sub MonitorStop(): Set instMergeBlocker = Nothing: End Sub
+Sub Stop_MergeCellBlocker(): Call SubMergeCellBlocker(True):  End Sub
+
+Sub SubMergeCellBlocker(IsStop As Boolean)
+    Static inst As MergeCellBlocker
+    
+    If IsStop Then
+        Set inst = Nothing
+        Exit Sub
+    End If
+    
+    Set inst = MergeCellBlocker.Init(Application)
+End Sub
+
+'--------------------------------------------------
 
 'セル結合支援自動化ON
 Sub Start_MergeCellCreater()
@@ -109,10 +119,24 @@ Sub Stop_MergeCellCreater()
     Call SubMergeCellCreater(True)
 End Sub
 
+Sub SubMergeCellCreater(IsStop As Boolean)
+    Static mcc As MergeCellCreater
+    
+    If IsStop Then
+        Set mcc = Nothing
+        Exit Sub
+    End If
+    
+    Set mcc = MergeCellCreater.Init(Application)
+End Sub
+
+'--------------------------------------------------
+
 '結合セル一覧表示後に呼び出すプロシージャ
 '他ブックのセル選択を検知しするために使用される
-Sub CellHighlightStart(): Call CellHighlightStartWs(ActiveSheet): End Sub
+Sub Start_CellHighlight(): Call CellHighlightStartWs(ActiveSheet): End Sub
 Sub CellHighlightStartWs(Optional ws As Worksheet)
+    Static instCellHighlighter As CellHighlighter
     Set instCellHighlighter = New CellHighlighter
     instCellHighlighter.Init ws
 End Sub

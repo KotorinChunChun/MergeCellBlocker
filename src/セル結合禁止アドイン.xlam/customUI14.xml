@@ -3,8 +3,8 @@
 		<tabs>
 			<tab id="mergeCellsBlockerTab" label="セル結合禁止">
 				<group id="mergeBlockerTabGroup1" label="セル結合の解析">
-					<button id="mergeBlockerButton01" label="監視開始" imageMso="MediaPlayPreview" size="large" onAction="onAction_MergeMonitorStart" />
-					<button id="mergeBlockerButton02" label="監視停止" imageMso="Media14PausePreview" size="large" onAction="onAction_MergeMonitorStop" />
+					<button id="mergeBlockerButton01" label="監視開始" imageMso="MediaPlayPreview" size="large" onAction="onAction_Start_MergeCellBlocker" />
+					<button id="mergeBlockerButton02" label="監視停止" imageMso="Media14PausePreview" size="large" onAction="onAction_Stop_MergeCellBlocker" />
 					<button id="mergeBlockerButton03" label="結合セルを検索" imageMso="SearchOnWeb" size="large" onAction="onAction_MergeSearch" />
 				</group>
 				<group id="mergeBlockerTabGroup2" label="セル結合と解除支援">

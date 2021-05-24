@@ -197,14 +197,3 @@ ContinueFor:
     arrangeWindows(1).Activate
 
 End Sub
-
-Sub SubMergeCellCreater(IsStop As Boolean)
-    Static mcc As MergeCellCreater
-    
-    If IsStop Then
-        Set mcc = Nothing
-        Exit Sub
-    End If
-    
-    Set mcc = MergeCellCreater.Init(Application)
-End Sub
