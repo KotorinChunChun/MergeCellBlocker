@@ -7,17 +7,18 @@ Rem
 Rem @author @KotorinChunChun
 Rem
 Rem @update
-Rem    2020/02/15 : 初回版（実用性皆無）
-Rem    2020/02/19 : 修正版（とりあえず実用可）
-Rem    2020/02/28 : Git公開
+Rem    2020/02/15 初回版（実用性皆無）
+Rem    2020/02/19 修正版（とりあえず実用可）
+Rem    2020/02/28 Git公開
+Rem    2021/05/24 セル結合支援追加
 Rem
 Option Explicit
 Option Private Module
 
 Public Const APP_NAME = "セル結合禁止アドイン"
 Public Const APP_CREATER = "@KotorinChunChun"
-Public Const APP_VERSION = "0.12"
-Public Const APP_UPDATE = "2020/02/28"
+Public Const APP_VERSION = "0.13"
+Public Const APP_UPDATE = "2021/05/24"
 Public Const APP_URL = "https://www.excel-chunchun.com/entry/merge_cell_blocker"
 
 Public instMergeBlocker As MergeBlocker
@@ -60,10 +61,33 @@ Sub AddinEnd(): ThisWorkbook.Close False: End Sub
 
 '未実装
 Sub MergeSearch(): MsgBox "Search": End Sub
-Sub MergeBreak(): MsgBox "Break": End Sub
-Sub MergeDown(): MsgBox "Down": End Sub
-Sub MergeRight(): MsgBox "Right": End Sub
-Sub MergeAuto(): MsgBox "Auto": End Sub
+
+Rem セル結合を解除して値で埋める
+Sub MergeBreak():
+    If TypeName(Selection) <> "Range" Then Exit Sub
+    Call kccFuncExcel.RangeUnMerge(Selection)
+End Sub
+
+Rem 縦方向に同じ値をセル結合
+Sub MergeDown():
+    If TypeName(Selection) <> "Range" Then Exit Sub
+    Call kccFuncExcel.RangeMergeRightDownByValue(Selection, 1)
+'    Call kccFuncExcel.RangeMergeByValue(Selection, CanRowMerge:=False, CanColMerge:=True)
+End Sub
+
+Rem 横方向に同じ値をセル結合
+Sub MergeRight()
+    If TypeName(Selection) <> "Range" Then Exit Sub
+    Call kccFuncExcel.RangeMergeRightDownByValue(Selection, 2)
+'    Call kccFuncExcel.RangeMergeByValue(Selection, CanRowMerge:=True, CanColMerge:=False)
+End Sub
+
+Rem 適当な方向へセル結合
+Sub MergeAuto():
+    If TypeName(Selection) <> "Range" Then Exit Sub
+    Call kccFuncExcel.RangeMergeByValue(Selection, True, True, False, 0)
+End Sub
+
 Sub MergePrint(): MsgBox "Print": End Sub
 '--------------------------------------------------
 
@@ -74,6 +98,16 @@ Sub MonitorStart(): Set instMergeBlocker = New MergeBlocker: End Sub
 
 '監視停止
 Sub MonitorStop(): Set instMergeBlocker = Nothing: End Sub
+
+'セル結合支援自動化ON
+Sub Start_MergeCellCreater()
+    Call SubMergeCellCreater(False)
+End Sub
+
+'セル結合支援自動化OFF
+Sub Stop_MergeCellCreater()
+    Call SubMergeCellCreater(True)
+End Sub
 
 '結合セル一覧表示後に呼び出すプロシージャ
 '他ブックのセル選択を検知しするために使用される

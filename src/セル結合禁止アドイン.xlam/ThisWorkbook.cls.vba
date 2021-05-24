@@ -9,6 +9,14 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Option Explicit
 
+Private Sub Workbook_BeforeClose(Cancel As Boolean)
+    If Not Me.Saved Then
+        If MsgBox(APP_NAME & "は変更されています。保存してから終了しますか？", vbYesNo) = vbYes Then
+            Me.Save
+        End If
+    End If
+End Sub
+
 '死んでも蘇る常駐マクロ
 '基本的にプロジェクトが違えばリセットしても死なないので必要はない。
 'ブレークポイントで停止中も動き出してエラーを吐くため、VBAerにとっては邪魔でしか無い。

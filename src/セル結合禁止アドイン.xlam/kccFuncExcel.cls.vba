@@ -61,13 +61,17 @@ Rem CanRowMerge   : 行結合を認める
 Rem CanColMerge   : 列結合を認める
 Rem CanEmptyMerge : 空白行の結合を認める
 Rem MergePriority_Sum0Down1Right2   : 結合優先度（合計数→行優先→列優先の3択）
-Function RangeMergeByValue(targetRange As Range, _
+Function RangeMergeByValue( _
+                    ByVal targetRange As Range, _
                     Optional CanRowMerge As Boolean = True, _
                     Optional CanColMerge As Boolean = True, _
                     Optional CanEmptyMerge As Boolean = True, _
                     Optional MergePriority_Sum0Down1Right2 As Long) As Range
-                    
-    Set targetRange = Intersect(targetRange, targetRange.Worksheet.UsedRange)
+    
+    Dim ur As Excel.Range: Set ur = targetRange.Worksheet.UsedRange
+    Set ur = ur.Resize(ur.Rows.Count + IIf(ur.Rows.CountLarge < ur.Worksheet.Rows.CountLarge, 1, 0), _
+                        ur.Columns.Count + IIf(ur.Columns.CountLarge < ur.Worksheet.Columns.CountLarge, 1, 0))
+    Set targetRange = Intersect(targetRange, ur)
     If targetRange Is Nothing Then Exit Function
     
     If targetRange.Areas.Count > 1 Then
